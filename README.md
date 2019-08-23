@@ -1,4 +1,4 @@
-# Taiko Screencast Plugin
+# Taiko Accessibility Plugin
 
 A plugin to perform accessibility testing with [Taiko](https://github.com/getgauge/taiko).
 For now, the plugin is utilizing the Axe Core library (https://github.com/dequelabs/axe-core). 

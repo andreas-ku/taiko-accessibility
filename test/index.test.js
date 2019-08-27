@@ -9,7 +9,7 @@ afterEach(async () => {
 });
 
 test('should integrate with Axe Core and Taiko', async () => {
-    await goto('https://taiko.gauge.org/');
+    await goto('https://taiko.gauge.org');
     const audit = await accessibility.audit();
-    expect(audit.violations.length).toBeDefined();
+    expect(audit.violations).toBeDefined();
 });

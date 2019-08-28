@@ -2,20 +2,23 @@ const axe = require('axe-core');
 
 let _dom;
 
-exports.init = (taiko, eventHandler) => {
-    eventHandler.on('createdSession', async (client) => {
-        _dom = client.DOM;
-    });
-};
-
 const runAxe = (node) => new Promise((fullfill, reject) => {
-    axe.run(node, (error, result) => {
+    const options = {
+        "resultTypes": ["violations"]
+    }
+    axe.run(node, options,(error, result) => {
         if (error) {
             reject(error);
         }
         fullfill(result);
     });
 });
+
+exports.init = (taiko, eventHandler) => {
+    eventHandler.on('createdSession', async (client) => {
+        _dom = client.DOM;
+    });
+};
 
 exports.audit = async () => {
     const rootNode = await _dom.getDocument({depth: -1});

@@ -9,6 +9,7 @@ afterEach(async () => {
 });
 
 test('should integrate with Axe Core and Taiko', async () => {
+    jest.setTimeout(30000);
     await goto('https://taiko.gauge.org');
     const audit = await accessibility.audit();
     expect(audit.violations).toBeDefined();

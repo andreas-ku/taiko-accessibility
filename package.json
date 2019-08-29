@@ -17,8 +17,7 @@
     "eslint-plugin-import": "^2.18.2",
     "events": "^3.0.0",
     "jest": "^24.9.0",
-    "taiko": "^1.0.0",
-    "xmldom": "^0.1.27"
+    "taiko": "^1.0.0"
   },
   "repository": "github:andreas-ku/taiko-accessibility"
 }

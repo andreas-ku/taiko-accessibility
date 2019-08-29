@@ -20,7 +20,7 @@ exports.init = (taiko, eventHandler) => {
     });
 };
 
-exports.audit = async () => {
+exports.runAudit = async () => {
     const rootNode = await _dom.getDocument({depth: -1});
     const pageSource = await _dom.getOuterHTML({
         nodeId: rootNode.root.nodeId,
@@ -28,5 +28,6 @@ exports.audit = async () => {
     const outerHtml = pageSource.outerHTML;
     const parser = new DOMParser(); // eslint-disable-line
     const parsedHtml = parser.parseFromString(outerHtml, 'text/html');
-    return await runAxe(parsedHtml);
+    const testResult = await runAxe(parsedHtml);
+    return testResult.violations;
 };

@@ -19,5 +19,6 @@
     "jest": "^24.9.0",
     "taiko": "^1.0.0",
     "xmldom": "^0.1.27"
-  }
+  },
+  "repository": "github:andreas-ku/taiko-accessibility"
 }

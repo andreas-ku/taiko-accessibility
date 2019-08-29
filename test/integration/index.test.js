@@ -13,7 +13,7 @@ describe('index', () => {
         jest.setTimeout(30000);
         await goto('https://taiko.gauge.org');
         const audit = await accessibility.audit();
-        expect(audit).toBe(42);
+        expect(audit.violations).toBeDefined();
     });
 });
 

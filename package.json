@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint src/*.js",
     "lint:fix": "eslint --fix src/*.js",
+    "test": "npm run test:unit && npm run test:integration",
     "test:integration": "TAIKO_PLUGIN='taiko-accessibility' jest -- test/integration",
     "test:unit": "jest -- test/unit"
   },

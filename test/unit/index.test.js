@@ -4,6 +4,9 @@ const {init, runAudit} = require('../../src');
 const {html: testHtml0Violations} = require('./data/0_violations');
 const {html: testHtml1Violation} = require('./data/1_violation');
 
+jest.mock('../../src/calculateScore', () => jest.fn());
+const calculateScore = require('../../src/calculateScore');
+
 describe('index', () => {
 
     const mockTestHtml = (testData) => {
@@ -21,20 +24,34 @@ describe('index', () => {
         })
     };
 
-    it('should not return any violations for a page that follows WCAG', async () => {
-        mockTestHtml(testHtml0Violations);
+    describe('violations', () => {
+        it('should not return any violations for a page that follows WCAG', async () => {
+            mockTestHtml(testHtml0Violations);
 
-        const violations = await runAudit();
+            const audit = await runAudit();
 
-        expect(violations.length).toEqual(0);
+            expect(audit.violations.length).toEqual(0);
+        });
+
+        it('should return violations of WCAG (example: missing alt tag of image)', async () => {
+            mockTestHtml(testHtml1Violation);
+
+            const audit = await runAudit();
+
+            expect(audit.violations.length).toEqual(1);
+            expect(audit.violations[0].description).toEqual('Ensures <img> elements have alternate text or a role of none or presentation');
+        });
     });
 
-    it('should return violations of WCAG (example: missing alt tag of image)', async () => {
-        mockTestHtml(testHtml1Violation);
+    describe('score', () => {
+        it('should return the result of the calculateScore function as score', async () => {
+            calculateScore.mockImplementation(() => 42);
+            mockTestHtml(testHtml0Violations);
 
-        const violations = await runAudit();
+            const audit = await runAudit();
 
-        expect(violations.length).toEqual(1);
-        expect(violations[0].description).toEqual('Ensures <img> elements have alternate text or a role of none or presentation');
-    });
+            expect(audit.score).toEqual(42);
+        });
+    })
+
 });

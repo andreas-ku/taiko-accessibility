@@ -10,9 +10,11 @@ afterEach(async () => {
 
 describe('index', () => {
     it('should integrate with Axe Core and Taiko', async () => {
-        jest.setTimeout(30000);
+        jest.setTimeout(20000);
+
         await goto('https://taiko.gauge.org');
         const violations = await accessibility.runAudit();
+
         expect(violations).toBeDefined();
     });
 });

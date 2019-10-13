@@ -13,14 +13,14 @@
   "author": "andreas-ku",
   "license": "MIT",
   "dependencies": {
-    "axe-core": "^3.3.1"
+    "axe-core": "^3.3.2"
   },
   "devDependencies": {
-    "eslint": "^6.1.0",
+    "eslint": "^6.5.1",
     "eslint-plugin-import": "^2.18.2",
     "events": "^3.0.0",
     "jest": "^24.9.0",
-    "taiko": "^1.0.0"
+    "taiko": "^1.0.2"
   },
   "repository": "github:andreas-ku/taiko-accessibility"
 }

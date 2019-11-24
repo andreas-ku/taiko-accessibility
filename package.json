@@ -1,6 +1,6 @@
 {
   "name": "taiko-accessibility",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Taiko plugin to for accessability testing",
   "main": "src/index.js",
   "scripts": {

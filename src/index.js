@@ -6,7 +6,7 @@ let _dom;
 const runAxe = (node) => new Promise((fullfill, reject) => {
     const options = {
         "resultTypes": ["violations"]
-    }
+    };
     axe.run(node, options,(error, result) => {
         if (error) {
             reject(error);
@@ -41,4 +41,4 @@ const runAudit = async () => {
 module.exports = {
     init,
     runAudit
-}
+};

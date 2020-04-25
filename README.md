@@ -12,6 +12,7 @@ npm install --save-dev taiko-accessibility
 ## Example
 
 ```bash
+  npm init -y
   npm install --save-dev taiko taiko-accessibility jest
 ```
 

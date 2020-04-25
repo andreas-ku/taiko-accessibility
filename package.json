@@ -7,8 +7,9 @@
     "check": "npm audit && npm run lint && npm run test",
     "lint": "eslint src/*.js",
     "lint:fix": "eslint --fix src/*.js",
-    "test": "npm run test:unit && npm run test:integration",
-    "test:integration": "npm install -g . && TAIKO_PLUGIN='taiko-accessibility' jest -- test/integration",
+    "test": "npm run test:unit && npm run test:integration && npm run test:integration:taikoRunner",
+    "test:integration": "npm install -g . && TAIKO_PLUGIN='taiko-accessibility' jest -- test/integration/usingJest.test.js",
+    "test:integration:taikoRunner": "npm install -g . && TAIKO_PLUGIN='taiko-accessibility' taiko test/integration/usingTaikoRunner.test.js",
     "test:unit": "jest -- test/unit"
   },
   "author": "andreas-ku",
@@ -18,7 +19,6 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.2",
     "events": "^3.1.0",
     "jest": "^25.4.0",
     "taiko": "^1.0.8"

@@ -1,40 +1,27 @@
-const axe = require('axe-core');
+const fs = require('fs');
 const calculateScore = require('./calculateScore');
 
-let _dom;
-
-const runAxe = (node) => new Promise((fullfill, reject) => {
-    const options = {
-        "resultTypes": ["violations"]
-    };
-    axe.run(node, options,(error, result) => {
-        if (error) {
-            reject(error);
-        }
-        fullfill(result);
-    });
-});
+let _runtime;
 
 const init = (taiko, eventHandler) => {
     eventHandler.on('createdSession', async (client) => {
-        _dom = client.DOM;
+        _runtime = client.Runtime;
     });
 };
 
-const runAudit = async () => {
-    const rootNode = await _dom.getDocument({depth: -1});
-    const pageSource = await _dom.getOuterHTML({
-        nodeId: rootNode.root.nodeId,
-    });
-    const outerHtml = pageSource.outerHTML;
-    const parser = new DOMParser(); // eslint-disable-line
-    const parsedHtml = parser.parseFromString(outerHtml, 'text/html');
+const injectAxe = async () => {
+    const script = fs.readFileSync('node_modules/axe-core/axe.min.js', 'utf8');
+    await _runtime.evaluate({expression: script, awaitPromise: true});
+};
 
-    const testResult = await runAxe(parsedHtml);
+const runAudit = async () => {
+    await injectAxe();
+    const response = await _runtime.evaluate({expression: '{testResult: axe.run({resultTypes: ["violations"]})}', awaitPromise: true, returnByValue: true});
+    const result = response.result.value;
 
     return {
-        score: calculateScore(testResult.passes, testResult.violations),
-        violations: testResult.violations
+        score: calculateScore(result.passes, result.violations),
+        violations: result.violations
     };
 };
 

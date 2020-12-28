@@ -1,6 +1,7 @@
 const { openBrowser, closeBrowser, goto, evaluate, accessibility } = require('taiko');
 
 beforeEach(async () => {
+    jest.setTimeout(20000);
     await openBrowser({headless: false});
 });
 

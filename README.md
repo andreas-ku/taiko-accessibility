@@ -25,6 +25,7 @@ const { accessibility, closeBrowser, goto, openBrowser } = require('taiko');
 describe('accessibility', () => {
 
     beforeEach(async () => {
+        jest.setTimeout(20000);
         await openBrowser();
     });
     
@@ -33,9 +34,7 @@ describe('accessibility', () => {
     });
     
     test('Should be accessible', async () => {
-        jest.setTimeout(20000);
-
-        await goto('https://taiko.gauge.org');
+        await goto('https://taiko.dev');
         const audit = await accessibility.runAudit();
 
         expect(audit.violations.length).toEqual(0);

@@ -4,7 +4,7 @@ const expect = require('expect');
 (async () => {
     try {
         await openBrowser();
-        await goto('https://taiko.gauge.org');
+        await goto('https://taiko.dev');
 
         const result = await accessibility.runAudit();
 

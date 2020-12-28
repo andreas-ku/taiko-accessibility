@@ -10,7 +10,7 @@ afterEach(async () => {
 
 describe('index', () => {
     it('integrates with Axe Core and Taiko', async () => {
-        await goto('https://taiko.gauge.org');
+        await goto('https://taiko.dev');
 
         const result = await accessibility.runAudit();
 

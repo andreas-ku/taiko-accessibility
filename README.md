@@ -22,12 +22,13 @@ Add this test in a file `accessibility.test.js`.
 
 const { accessibility, closeBrowser, goto, openBrowser } = require('taiko');
 
+const LONG_TIMEOUT = 20000;
+
 describe('accessibility', () => {
 
     beforeEach(async () => {
-        jest.setTimeout(20000);
         await openBrowser();
-    });
+    }, LONG_TIMEOUT);
     
     afterEach(async () => {
         await closeBrowser();

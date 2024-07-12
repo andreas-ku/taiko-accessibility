@@ -1,10 +1,12 @@
 const { openBrowser, closeBrowser, goto, evaluate, accessibility } = require('taiko');
 
+const LONG_TIMEOUT = 20000;
+
 describe('index', () => {
 
     beforeEach(async () => {
         await openBrowser({headless: false});
-    });
+    }, LONG_TIMEOUT);
     
     afterEach(async () => {
         await closeBrowser();

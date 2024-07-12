@@ -20,7 +20,7 @@
   "devDependencies": {
     "eslint": "^8.2.0",
     "events": "^3.3.0",
-    "jest": "^27.3.1",
+    "jest": "^29.7.0",
     "taiko": "^1.2.7"
   },
   "repository": "github:andreas-ku/taiko-accessibility"

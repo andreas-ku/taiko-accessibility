@@ -5,7 +5,7 @@ on:
 
 jobs:
   dependabot:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     # Always check the actor is Dependabot to prevent your workflow from failing on non-Dependabot PRs
     # if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
@@ -13,4 +13,4 @@ jobs:
       - run: npm ci
       - run: npm run test:unit
       - run: npm run test:integration
-      - run: npm run test:test:integration:taikoRunner
+      - run: npm run test:integration:taikoRunner

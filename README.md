@@ -69,4 +69,3 @@ An array with detailed information of the accessibility violations.
 ## License
 
 MIT
-

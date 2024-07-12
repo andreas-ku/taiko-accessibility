@@ -1,5 +1,5 @@
 const {accessibility, openBrowser, goto, closeBrowser} = require('taiko');
-const expect = require('expect');
+const { expect } = require('expect');
 
 (async () => {
     try {

@@ -1,15 +1,15 @@
 const { openBrowser, closeBrowser, goto, evaluate, accessibility } = require('taiko');
 
-beforeEach(async () => {
-    jest.setTimeout(20000);
-    await openBrowser({headless: false});
-});
-
-afterEach(async () => {
-    await closeBrowser();
-});
-
 describe('index', () => {
+
+    beforeEach(async () => {
+        await openBrowser({headless: false});
+    });
+    
+    afterEach(async () => {
+        await closeBrowser();
+    });
+
     it('integrates with Axe Core and Taiko', async () => {
         await goto('https://taiko.dev');
 
